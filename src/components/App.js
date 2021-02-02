@@ -41,10 +41,20 @@ export default function App(props) {
 			<h1>Welcome to Jeopardy!</h1>
 			<button onClick={handleClick}>New Question</button>
 			<h3>{score}</h3>
+
 			{Object.keys(question).length
 				? question.map(question => {
 						return (
 							<div>
+								<button onClick={event => newScore(score + question.value)}>
+									Correct
+								</button>
+								<button onClick={event => newScore(score - question.value)}>
+									Incorrect
+								</button>
+								<button onClick={event => newScore(score - score)}>
+									Reset
+								</button>
 								<div className="category">{question.category.title}</div>
 								<div className="value">Value: {question.value}</div>
 								<div className="question">Question: {question.question}</div>
